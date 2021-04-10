@@ -59,8 +59,8 @@
 //		EqualMethod Equal = EqualMethod();
 //		if (Equal.EqualDot(A, P) || Equal.EqualDot(B, P) || Equal.EqualDot(C, P))
 //		{
-//			cout << "Dot is equal to this height"; //местоположение в многоугольнике
-//			cout << "Dot belong Polygon";
+//			cout << "Dot is equal to this height\n"; //местоположение в многоугольнике
+//			cout << "Dot belong Polygon\n";
 //			tuple <const bool, int> answer = { true, check_border };
 //			return answer; // = "Dot belong Polygon"; //вывод - TRUE?
 //		}
@@ -70,13 +70,13 @@
 //		float b = (((C.Y - A.Y) * (P.X - C.X)) + ((A.X - C.X) * (P.Y - C.Y))) / denominate;
 //		float c = (((A.Y - B.Y) * (P.X - C.X) + ((B.X - A.X) * (P.Y - A.Y)))) / denominate;
 //
-//		if (Equal.GreaterOrEqual(a, 0) && Equal.GreaterOrEqual(b, 0) && Equal.GreaterOrEqual(c, 0))
+//		if (Equal.GreaterOrEqual(a, 0.0f) && Equal.GreaterOrEqual(b, 0.0f) && Equal.GreaterOrEqual(c, 0.0f))
 //		{
-//			cout << "The dot is in the triangle";
+//			cout << "The dot is in the triangle\n";
 //			// уточнение, т.е. где именно она в треугольнике
 //			if (OnBorder(a, b, c))
 //			{
-//				cout << "The dot is on the border";
+//				cout << "The dot is on the border\n";
 //				check_border++;
 //				tuple <const bool, int> t = { true, check_border };
 //				return t;
@@ -119,7 +119,7 @@
 //			if (Equal.EqualDot(elem, P) == true)
 //			{
 //				cout << elem.X << '\t' << elem.Y;
-//				return answer = "Dot is equal to this height"; //На самом деле - принадлежит многогольнику
+//				return answer = "Dot is equal to this height\n"; //На самом деле - принадлежит многогольнику
 //				break;
 //			}
 //		}
@@ -136,22 +136,22 @@
 //			tie(answ, check) = inPolygon.Baricenter_method(startDot, dots[i], dots[i + 1], P, check_border);
 //			check_border = check;
 //		}
-//		answer = "Belongs polygon";
+//		answer = "Belongs polygon\n";
 //		if (answ == true)
 //		{
 //			if (check > 1 || check == 0)
 //			{
-//				answer = "Inside in polygon";
+//				answer = "Inside in polygon\n";
 //			}
 //			if (check == 1)
 //			{
-//				answer = "On border of polygon";
+//				answer = "On border of polygon\n";
 //			}
 //		}
 //		else
 //			if (answ == false)
 //			{
-//				answer = "Not Inside in polygon";
+//				answer = "Not Inside in polygon\n";
 //			}
 //		cout << endl << answer << endl;
 //		return answer;
@@ -163,11 +163,25 @@
 //int main()
 //{
 //	float x, y;
+//	int n;
 //	vector<PointF> points;
 //	cout << "---------------START--------------------\n";
-//	cout << "Enter the coordinates for the following dots:\n";
-//
-//	/*Инициализаци GDI+*/
+//	//Ввод координат
+//		//cout << "-----Enter how many dots in Figure------\n";
+//		//cin >> n;
+//		//cout << "Enter the coordinates for the following dots:\n"; 
+//		//
+//		//for (int i = 0; i < n; i++)
+//		//{
+//		//	cout << "Enter the X and Y:\n";
+//		//	cin >> x >> y;
+//		//	PointF point(x, y);
+//		//	points.push_back(point);
+//		//}
+//		//cout << "Enter the X and Y of P:\n";
+//		//cin >> x >> y;
+//		//PointF P(x, y);
+//		/*Инициализаци GDI+*/
 //	ULONG_PTR gdToken;
 //	GdiplusStartupInput gdInput;
 //
@@ -179,15 +193,14 @@
 //	PointF D(4.5f, 2.0f);
 //	PointF E(3.0f, 1.0f);
 //
-//
 //	points.push_back(A);
 //	points.push_back(B);
 //	points.push_back(C);
 //	points.push_back(D);
 //	points.push_back(E);
 //
-//	float XcenterP = (points[1].X + points[0].X) / 2;
-//	float YcenterP = (points[1].Y + points[0].Y) / 2;
+//	float XcenterP = (points[1].X + points[0].X) / 2.0f;
+//	float YcenterP = (points[1].Y + points[0].Y) / 2.0f;
 //
 //	PointF P(XcenterP, YcenterP); //проверяемая точка 
 //
@@ -195,8 +208,12 @@
 //	cout << "-------------Check by Polygon baricentric method----------------------- \n";
 //
 //	string result = method.Polygon_method(points, P);
-//	cout << result;
-//
+//	cout << "Result for DOT P = " << P.X << P.Y << " is: " << result;
+//	cout << "Coordinates of Polygon:";
+//	for (int i = 0; i < points.size(); i++)
+//	{
+//		cout << "Height " << i + 1 << " = " << "X= " << points[i].X << " Y = " << points[i].Y << endl;
+//	}
 //	GdiplusShutdown(gdToken);
 //	return 0;
 //}
