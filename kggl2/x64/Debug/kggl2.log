@@ -1,9 +1,16 @@
 ﻿  Line.cpp
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(136,9): warning C4101: 'hdc': unreferenced local variable
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(166,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(166,28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(166,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(166,18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(172,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(132): warning C4715: 'wWinMain': not all control paths return a value
-  kggl2.vcxproj -> C:\Users\SadLoneWolf\source\repos\kggl2\x64\Debug\kggl2.exe
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(37,51): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(37,51): error C2143: syntax error: missing ',' before '&'
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(38,51): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(38,51): error C2143: syntax error: missing ',' before '&'
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(167,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(167,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(167,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(167,19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(173,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(189,39): error C2660: 'WorldToViewPort': function does not take 4 arguments
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(37,17): message : see declaration of 'WorldToViewPort'
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(210,44): error C2660: 'WorldToViewPort': function does not take 4 arguments
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(37,17): message : see declaration of 'WorldToViewPort'
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(320,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(334,32): warning C4018: '<': signed/unsigned mismatch

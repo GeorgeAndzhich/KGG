@@ -7,7 +7,7 @@
 
 #include <Windows.h>
 #include <gdiplus.h>
-
+#include <CommCtrl.h>
 #include <cmath>
 #include<vector>
 
@@ -34,8 +34,9 @@ using namespace Gdiplus;
     const int x_min = 10;
     const int y_min = 10;
 
-
-
+    inline void WorldToViewPort(const WorldWindow &w, const Viewport &vp, PointF* points, int count);
+    inline void ViewPortToWorld(const WorldWindow &w, const Viewport &vp, PointF* points, int count);
+int cohenSutherlandClip(double x1, double y1, double x2, double y2);
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 void draw(HDC);
 
@@ -160,17 +161,35 @@ void draw(HDC hdc)
     Graphics gf(hdc);
     gf.Clear(Color::Orange);
     gf.SetSmoothingMode(SmoothingModeHighQuality);
+    Pen curvePen(Color::Black);
 
     WorldWindow w(0.0f, 0.0f, 980.0f, 840.0f);
-    // Viewport vp(-2.0f, 3.90f, 3.0f, -3.0f);
-    Viewport vp(-1.0f,1.0f,1.0f,-1.0f);
+     Viewport vp(-1.0f, 1.90f, 2.0f, -1.2f);
     float A = (w.Right - w.Left) /(float) vp.Width;
     float B = (w.Bottom - w.Top) /(float) vp.Height;
     float C = w.Left - A * vp.X;
     float D = w.Top - B * vp.Y;
    
     int m = 14 * PI / 0.05f;//879
-    PointF points[880];
+
+    PointF border[5] =
+    {
+        PointF(w.Right,w.Top),
+        PointF(w.Left,w.Top),
+        PointF(w.Left,w.Bottom),
+        PointF(w.Right,w.Bottom),
+        PointF(w.Right,w.Top)
+
+    };
+
+
+    for (int i = 0; i < 4; i++)
+    {
+        PointF view[2] = { border[i + 1] , border[i] };
+        WorldToViewPort(w, vp, view, 2);
+    }
+
+    std::vector<PointF>points(m);
     float t = 0.0f;
      for (int i = 0; i < m; i++)
     {
@@ -182,13 +201,16 @@ void draw(HDC hdc)
         points[i].Y = B * Y + D;
         t += 0.05f;
     }
-     RectF border(200, 200, 300, 600);
 
-     Pen borderPen(Color::Green, 0.5f);
-     gf.DrawRectangle(&borderPen, border);
-    Pen curvePen(Color::Black, 0.5f);
-    gf.DrawCurve(&curvePen, points, m);
-
+     for (int i = 0; i < m - 1; i++)
+     {
+         PointF view[2] = { points[i],points[i + 1] };
+         if (cohenSutherlandClip(view[0].X, view[0].Y, view[1].X, view[1].Y) == 0)
+         {
+             WorldToViewPort(w, vp, view, 2);
+             gf.DrawCurve(&curvePen, view, 2);
+         }
+     }
 }
 
 int computeCode(double x, double y)
@@ -207,7 +229,7 @@ int computeCode(double x, double y)
 
     return code;
 }
-void cohenSutherlandClip(double x1, double y1, double x2, double y2)
+int cohenSutherlandClip(double x1, double y1, double x2, double y2)
 {
     int code1 = computeCode(x1, y1);
     int code2 = computeCode(x2, y2);
@@ -219,6 +241,7 @@ void cohenSutherlandClip(double x1, double y1, double x2, double y2)
         {
             //Линия полностью находится внутри
             accept = true;
+            return 0;
             break;
         }
 
@@ -272,13 +295,46 @@ void cohenSutherlandClip(double x1, double y1, double x2, double y2)
                 x1 = x;
                 y1 = y;
                 code1 = computeCode(x1, y1);
+                return code1;
             }
             else
             {
                 x2 = x;
                 y2 = y;
                 code2 = computeCode(x2, y2);
+                return code2;
             }
         }
     }
+}
+
+
+inline void WorldToViewPort(const WorldWindow& w, const Viewport& vp, PointF* points, int count)
+{
+    //Из мирового окна в окно просмотра
+    float A = (float)vp.Width / (w.Right - w.Left);
+    float B = (float)vp.Height / (w.Bottom - w.Top);
+    float C = vp.X - A * w.Left;
+    float D = vp.Y - B * w.Top;
+
+    for (unsigned int i = 0; i < count; ++i)
+    {
+        points[i].X = A * points[i].X + C;
+        points[i].Y = B * points[i].Y + D;
+    }
+}
+
+inline void ViewPortToWorld(const WorldWindow& w, const Viewport& vp, PointF* points, int count)
+{
+    //Из мирового окна в окно просмотра
+    float A = (w.Right - w.Left) / (float)vp.Width;
+    float B = (w.Bottom - w.Top) / (float)vp.Height;
+    float C = w.Left - A * vp.X;
+    float D = w.Top - B * vp.Y;
+    for (unsigned int i = 0; i < count; ++i)
+    {
+        points[i].X = A * points[i].X + C;
+        points[i].Y = B * points[i].Y + D;
+    }
+
 }
