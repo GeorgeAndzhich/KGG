@@ -29,13 +29,11 @@ using namespace Gdiplus;
     const int BOTTOM = 4; // 0100
     const int TOP = 8;    // 1000
 
-    const int x_max = 200;
-    const int y_max = 200;
-    const int x_min = 10;
-    const int y_min = 10;
-
-    inline void WorldToViewPort(const WorldWindow &w, const Viewport &vp, PointF* points, int count);
-    inline void ViewPortToWorld(const WorldWindow &w, const Viewport &vp, PointF* points, int count);
+    const float x_max = 200.f;
+    const float y_max = 200.f;
+    const float x_min = 10.f;
+    const float y_min = 10.f;
+  
 int cohenSutherlandClip(double x1, double y1, double x2, double y2);
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 void draw(HDC);
@@ -71,7 +69,8 @@ public:
     }
 };
 
-
+inline void WorldToViewPort(const WorldWindow& w, const Viewport& vp, PointF* points, int count);
+inline void ViewPortToWorld(const WorldWindow& w, const Viewport& vp, PointF* points, int count);
 
 
 
@@ -164,7 +163,7 @@ void draw(HDC hdc)
     Pen curvePen(Color::Black);
 
     WorldWindow w(0.0f, 0.0f, 980.0f, 840.0f);
-     Viewport vp(-1.0f, 1.90f, 2.0f, -1.2f);
+     Viewport vp(-2.0f, 1.90f, 2.0f, -1.2f);
     float A = (w.Right - w.Left) /(float) vp.Width;
     float B = (w.Bottom - w.Top) /(float) vp.Height;
     float C = w.Left - A * vp.X;
@@ -187,6 +186,7 @@ void draw(HDC hdc)
     {
         PointF view[2] = { border[i + 1] , border[i] };
         WorldToViewPort(w, vp, view, 2);
+        gf.DrawLines(&curvePen, view, 2);
     }
 
     std::vector<PointF>points(m);
@@ -205,10 +205,10 @@ void draw(HDC hdc)
      for (int i = 0; i < m - 1; i++)
      {
          PointF view[2] = { points[i],points[i + 1] };
-         if (cohenSutherlandClip(view[0].X, view[0].Y, view[1].X, view[1].Y) == 0)
-         {
+        if (cohenSutherlandClip(view[0].X, view[0].Y, view[1].X, view[1].Y) == 0)
+        {
              WorldToViewPort(w, vp, view, 2);
-             gf.DrawCurve(&curvePen, view, 2);
+             gf.DrawLines(&curvePen, view, 2);
          }
      }
 }
