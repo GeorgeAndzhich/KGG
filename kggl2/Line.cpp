@@ -162,8 +162,9 @@ void draw(HDC hdc)
     gf.SetSmoothingMode(SmoothingModeHighQuality);
     Pen curvePen(Color::Black);
 
-    WorldWindow w(0.0f, 0.0f, 980.0f, 840.0f);
-     Viewport vp(-2.0f, 1.90f, 2.0f, -1.2f);
+    Viewport vp(5.0f, 5.0f, 580.0f, 440.0f);
+    WorldWindow w(-2.75f, 2.75f, 2.75f, -2.75f);
+
     float A = (w.Right - w.Left) /(float) vp.Width;
     float B = (w.Bottom - w.Top) /(float) vp.Height;
     float C = w.Left - A * vp.X;

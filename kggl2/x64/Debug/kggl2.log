@@ -1,11 +1,12 @@
-﻿  line2.cpp
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\line2.cpp(136,9): warning C4101: 'hdc': unreferenced local variable
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\line2.cpp(166,32): warning C4018: '<': signed/unsigned mismatch
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\line2.cpp(180,32): warning C4018: '<': signed/unsigned mismatch
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\line2.cpp(196,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\line2.cpp(196,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\line2.cpp(196,24): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\line2.cpp(196,18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\line2.cpp(202,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\line2.cpp(132): warning C4715: 'wWinMain': not all control paths return a value
+﻿  Line.cpp
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(136,9): warning C4101: 'hdc': unreferenced local variable
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(165,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(165,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(165,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(165,17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(173,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(321,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(335,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(132): warning C4715: 'wWinMain': not all control paths return a value
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\Line.cpp(310): warning C4715: 'cohenSutherlandClip': not all control paths return a value
   kggl2.vcxproj -> C:\Users\SadLoneWolf\source\repos\kggl2\x64\Debug\kggl2.exe
