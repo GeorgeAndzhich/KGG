@@ -205,7 +205,7 @@ void DrawPolyline(Gdiplus::Graphics& g, const Gdiplus::Pen* pen, const std::vect
 Gdiplus::GpPointF f(REAL t)
 {
 	GpPointF res;
-	float r = std::sin((4.0f / 7.0f) * t);
+	float r = std::sin((4.0f / 7.0f) * t)*30;
 	res.X = r * std::cos(t);
 	res.Y = r * std::sin(t);
 	return res;
@@ -216,7 +216,7 @@ VOID OnPaint(HDC hdc)
 	drawingBoard.Clear(Color::Orange);
 	Pen curvePen(Color(0, 0, 0), 2.0f);
 	Pen borderPen(Color(255, 210, 140), 5.0f);
-	WorldWindow w(-40, 40, 40, -40); 
+	WorldWindow w(-30, 50, -10, -80); 
 	Viewport vp(100, 100, 600, 600); 
 	drawingBoard.DrawRectangle(&borderPen, 100, 100, 500, 500);
 	std::vector<Gdiplus::GpPointF> parabola = Curve(0, 7 * PI, 300, f);

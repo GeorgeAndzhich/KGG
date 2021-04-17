@@ -32,9 +32,6 @@
     <ClCompile Include="kggl2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Line.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="line2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
