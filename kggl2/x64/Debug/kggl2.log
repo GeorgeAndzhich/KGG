@@ -1,3 +1,4 @@
 ﻿  kggl2.cpp
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\kggl2.cpp(130,26): warning C4018: '<': signed/unsigned mismatch
 C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\kggl2.cpp(70): warning C4715: 'wWinMain': not all control paths return a value
   kggl2.vcxproj -> C:\Users\SadLoneWolf\source\repos\kggl2\x64\Debug\kggl2.exe
