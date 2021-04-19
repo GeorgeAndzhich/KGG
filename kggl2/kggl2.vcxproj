@@ -146,7 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="kggl2.cpp" />
-    <ClCompile Include="line2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="kggl2.rc" />
