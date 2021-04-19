@@ -1,4 +1,4 @@
-﻿  line2.cpp
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\line2.cpp(47,12): warning C4244: 'return': conversion from 'WPARAM' to 'int', possible loss of data
-C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\line2.cpp(222,67): warning C4305: 'argument': truncation from 'double' to 'float'
+﻿  kggl2.cpp
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\kggl2.cpp(130,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\SadLoneWolf\source\repos\kggl2\kggl2\kggl2.cpp(70): warning C4715: 'wWinMain': not all control paths return a value
   kggl2.vcxproj -> C:\Users\SadLoneWolf\source\repos\kggl2\x64\Debug\kggl2.exe
