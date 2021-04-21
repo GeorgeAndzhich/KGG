@@ -110,6 +110,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
    return DefWindowProc(hWnd, msg, wParam, lParam);
 }
 
+PointF Tween(const PointF& A, const PointF& B, float t)
+{
+    return PointF(
+        A.X * (1.f - t) + B.X * t, A.Y * (1.f - t) + B.Y * t);
+}
+void Tween(const PointF* A, const PointF* B, PointF* P, int count, float t)
+{
+    for (int i = 0; i < count; i++)
+    {
+        P[i] = Tween(A[i], B[i], t);
+    }
+}
+
 void DrawCar(HDC hdc)
 {
 
@@ -118,11 +131,14 @@ void DrawCar(HDC hdc)
     gf.DrawImage(img, 60, 60, 160, 260);
    gf.SetSmoothingMode(SmoothingModeAntiAlias);
    Pen mainPen(Color::Red);
-      Point points[6] =
+      Point points[12] =
    {
         Point(350,330), Point(380,240),
         Point(380,240), Point(720,240),
-        Point(720,240), Point(780,330)
+        Point(720,240), Point(780,330),
+        Point(780,330), Point(780,430),
+        Point(780,430), Point (350,430),
+        Point(350,430), Point(350,330)
    };
   
    Matrix mx;
@@ -130,8 +146,8 @@ void DrawCar(HDC hdc)
        for (int j = 0; j < frameIndex; j++)
        {
            mx.Translate(10.f, 0.f);
-           mx.TransformPoints(points, 6);
-           gf.DrawLines(&mainPen, points, 6);
+           mx.TransformPoints(points, 12);
+           gf.DrawLines(&mainPen, points, 12);
        }
 }
 
